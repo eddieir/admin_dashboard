@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <a mat-button href="javascript:void(0)" [matMenuTriggerFor]="menu">
       <img
         class="matero-user-avatar r-full align-middle"
-        src="assets/images/avatar.jpg"
+        src="assets/images/23243761.jpg"
         width="24"
         alt="avatar"
       />

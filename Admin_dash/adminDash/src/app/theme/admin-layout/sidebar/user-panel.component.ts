@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
     >
       <img
         class="matero-user-panel-avatar m-b-8 r-full"
-        src="assets/images/avatar.jpg"
+        src="assets/images/23243761.jpg"
         alt="avatar"
         width="64"
       />
