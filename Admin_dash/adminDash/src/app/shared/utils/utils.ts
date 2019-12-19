@@ -1,6 +1,4 @@
-/**
- * 序列化 JSON，同时转义，删除两边空格
- */
+
 export function serialize(obj = {}) {
   const arr = [];
   for (const k of Object.keys(obj)) {
@@ -17,9 +15,6 @@ export function serialize(obj = {}) {
   return arr.join('&');
 }
 
-/**
- * 删除 null | undefined | ''
- */
 export function delEmptyKey(obj: {}) {
   const objCpy = {};
   if (obj === null || obj === undefined || obj === '') {
@@ -35,9 +30,7 @@ export function delEmptyKey(obj: {}) {
   return objCpy;
 }
 
-/**
- * 判断是否是空对象
- */
+
 export function isEmptyObject(obj: {}) {
   let name: any;
   // tslint:disable-next-line: forin
@@ -47,22 +40,15 @@ export function isEmptyObject(obj: {}) {
   return true;
 }
 
-/**
- * 判断是否是合法的日期对象
- */
 export function isValidDate(date: Date) {
   return date instanceof Date && !isNaN(date.getTime());
 }
 
-/**
- * 将对象转为字符串
- */
 export function obj2Str(obj: any) {
   const p = {};
   for (const key of Object.keys(obj)) {
     if (obj[key] || obj[key] === 0) {
       if (obj[key].toString() !== '') {
-        // 空数组排除
         p[key] = obj[key].toString();
       }
     }
@@ -70,9 +56,6 @@ export function obj2Str(obj: any) {
   return p;
 }
 
-/**
- * 去除字符串回车换行空白并转换成数组
- */
 export function str2arr(str: string) {
   return str.replace(/[\r\n\s]/g, '').split(',');
 }
