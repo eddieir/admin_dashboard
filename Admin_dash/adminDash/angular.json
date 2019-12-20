@@ -3,21 +3,21 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "adminDash": {
+    "ng-matero": {
+      "root": "",
+      "sourceRoot": "src",
       "projectType": "application",
+      "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/adminDash",
+            "outputPath": "dist/ng-matero",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -29,7 +29,10 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/apexcharts/dist/apexcharts.min.js"
+            ],
+            "es5BrowserSupport": true
           },
           "configurations": {
             "production": {
@@ -69,23 +72,23 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "adminDash:build",
+            "browserTarget": "ng-matero:build",
             "proxyConfig": "proxy.config.js"
           },
           "configurations": {
             "production": {
-              "browserTarget": "adminDash:build:production"
+              "browserTarget": "ng-matero:build:production"
             },
             "hmr": {
               "hmr": true,
-              "browserTarget": "adminDash:build:hmr"
+              "browserTarget": "ng-matero:build:hmr"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "adminDash:build"
+            "browserTarget": "ng-matero:build"
           }
         },
         "test": {
@@ -95,14 +98,16 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/apexcharts/dist/apexcharts.min.js"
+            ],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ]
           }
         },
         "lint": {
@@ -117,21 +122,37 @@
               "**/node_modules/**"
             ]
           }
-        },
+        }
+      }
+    },
+    "ng-matero-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "adminDash:serve"
+            "devServerTarget": "ng-matero:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "adminDash:serve:production"
+              "devServerTarget": "ng-matero:serve:production"
             }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
     }
   },
-  "defaultProject": "adminDash"
+  "defaultProject": "ng-matero"
 }
