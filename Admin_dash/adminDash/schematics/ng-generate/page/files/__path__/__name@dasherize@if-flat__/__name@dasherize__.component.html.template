@@ -1,3 +1,0 @@
-<page-header [title]="'<%= dasherize(name) %>'"></page-header>
-
-<p><%= dasherize(name) %> works!</p>

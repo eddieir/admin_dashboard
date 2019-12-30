@@ -1,0 +1,277 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["design-design-module"],{
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/routes/design/colors/colors.component.html":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/routes/design/colors/colors.component.html ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<breadcrumb></breadcrumb>\n\n<div fxLayout=\"row wrap\" fxLayoutGap=\"16px grid\">\n  <div fxFlex.gt-md=\"20\" fxFlex.gt-sm=\"25\" fxFlex.gt-xs=\"50\" fxFlex=\"100\"\n       *ngFor=\"let color of colors; trackBy: trackByColor\">\n    <div class=\"b-1\">\n      <ng-container *ngFor=\"let hue of color.value|keyvalue:keyAscOrder; first as isFirst\">\n        <div class=\"bg-{{color.key+'-'+hue.key}} text-{{color.value['contrast'][hue.key]}} p-8\"\n             *ngIf=\"hue.key !== 'contrast'\">\n          <span class=\"m-r-4 text-capitalize\" *ngIf=\"isFirst\">{{color.key}}</span>\n          <span>{{hue.key}}</span><span fxFlex></span><span>{{hue.value}}</span>\n        </div>\n      </ng-container>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/routes/design/icons/icons.component.html":
+/*!************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/routes/design/icons/icons.component.html ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<page-header class=\"bg-purple-500\"></page-header>\n\n<ng-container *ngFor=\" let group of icons|keyvalue; trackBy: trackByIcon\">\n  <mat-card>\n    <mat-card-title class=\"mat-h1 f-w-300 text-capitalize m-b-16 text-gray-500\">{{group.key}}\n    </mat-card-title>\n    <mat-card-content>\n      <div fxLayout=\"row wrap\" fxLayoutGap=\"16px grid\">\n        <div fxFlex.gt-md=\"11.11\" fxFlex.md=\"20\" fxFlex.sm=\"25\" fxFlex.xs=\"33.33\"\n             *ngFor=\"let icon of group.value\">\n          <div class=\"text-center\">\n            <mat-icon class=\"icon-36\">{{icon}}</mat-icon>\n            <p class=\"f-s-12\">{{icon}}</p>\n          </div>\n        </div>\n      </div>\n    </mat-card-content>\n  </mat-card>\n</ng-container>\n"
+
+/***/ }),
+
+/***/ "./src/app/routes/design/colors/colors.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/routes/design/colors/colors.component.ts ***!
+  \**********************************************************/
+/*! exports provided: DesignColorsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DesignColorsComponent", function() { return DesignColorsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _colors_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./colors.service */ "./src/app/routes/design/colors/colors.service.ts");
+/* harmony import */ var _shared__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @shared */ "./src/app/shared/index.ts");
+
+
+
+
+var DesignColorsComponent = /** @class */ (function () {
+    function DesignColorsComponent(colorsSrv) {
+        this.colorsSrv = colorsSrv;
+        this.colors = [];
+    }
+    DesignColorsComponent.prototype.valueAscOrder = function (a, b) {
+        return a.value.localeCompare(b.value);
+    };
+    DesignColorsComponent.prototype.keyAscOrder = function (a, b) {
+        return a.key - b.key;
+    };
+    DesignColorsComponent.prototype.ngOnInit = function () {
+        var e_1, _a;
+        var _colors = _shared__WEBPACK_IMPORTED_MODULE_3__["MAT_COLORS"];
+        try {
+            for (var _b = tslib__WEBPACK_IMPORTED_MODULE_0__["__values"](Object.keys(_colors)), _c = _b.next(); !_c.done; _c = _b.next()) {
+                var key = _c.value;
+                this.colors.push({
+                    key: key,
+                    value: _colors[key],
+                });
+            }
+        }
+        catch (e_1_1) { e_1 = { error: e_1_1 }; }
+        finally {
+            try {
+                if (_c && !_c.done && (_a = _b.return)) _a.call(_b);
+            }
+            finally { if (e_1) throw e_1.error; }
+        }
+    };
+    DesignColorsComponent.prototype.trackByColor = function (index, color) {
+        return color.key;
+    };
+    DesignColorsComponent.ctorParameters = function () { return [
+        { type: _colors_service__WEBPACK_IMPORTED_MODULE_2__["DesignColorsService"] }
+    ]; };
+    DesignColorsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-design-colors',
+            template: __webpack_require__(/*! raw-loader!./colors.component.html */ "./node_modules/raw-loader/index.js!./src/app/routes/design/colors/colors.component.html"),
+            providers: [_colors_service__WEBPACK_IMPORTED_MODULE_2__["DesignColorsService"]],
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_colors_service__WEBPACK_IMPORTED_MODULE_2__["DesignColorsService"]])
+    ], DesignColorsComponent);
+    return DesignColorsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/routes/design/colors/colors.service.ts":
+/*!********************************************************!*\
+  !*** ./src/app/routes/design/colors/colors.service.ts ***!
+  \********************************************************/
+/*! exports provided: DesignColorsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DesignColorsService", function() { return DesignColorsService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var DesignColorsService = /** @class */ (function () {
+    function DesignColorsService() {
+    }
+    DesignColorsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+    ], DesignColorsService);
+    return DesignColorsService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/routes/design/design-routing.module.ts":
+/*!********************************************************!*\
+  !*** ./src/app/routes/design/design-routing.module.ts ***!
+  \********************************************************/
+/*! exports provided: DesignRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DesignRoutingModule", function() { return DesignRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _colors_colors_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./colors/colors.component */ "./src/app/routes/design/colors/colors.component.ts");
+/* harmony import */ var _icons_icons_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./icons/icons.component */ "./src/app/routes/design/icons/icons.component.ts");
+
+
+
+
+
+var routes = [
+    { path: 'colors', component: _colors_colors_component__WEBPACK_IMPORTED_MODULE_3__["DesignColorsComponent"], data: { title: 'Material Colors' } },
+    { path: 'icons', component: _icons_icons_component__WEBPACK_IMPORTED_MODULE_4__["DesignIconsComponent"], data: { title: 'Material Icons' } },
+];
+var DesignRoutingModule = /** @class */ (function () {
+    function DesignRoutingModule() {
+    }
+    DesignRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
+        })
+    ], DesignRoutingModule);
+    return DesignRoutingModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/routes/design/design.module.ts":
+/*!************************************************!*\
+  !*** ./src/app/routes/design/design.module.ts ***!
+  \************************************************/
+/*! exports provided: DesignModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DesignModule", function() { return DesignModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @shared/shared.module */ "./src/app/shared/shared.module.ts");
+/* harmony import */ var _design_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./design-routing.module */ "./src/app/routes/design/design-routing.module.ts");
+/* harmony import */ var _colors_colors_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./colors/colors.component */ "./src/app/routes/design/colors/colors.component.ts");
+/* harmony import */ var _icons_icons_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./icons/icons.component */ "./src/app/routes/design/icons/icons.component.ts");
+
+
+
+
+
+
+var COMPONENTS = [_colors_colors_component__WEBPACK_IMPORTED_MODULE_4__["DesignColorsComponent"], _icons_icons_component__WEBPACK_IMPORTED_MODULE_5__["DesignIconsComponent"]];
+var COMPONENTS_DYNAMIC = [];
+var DesignModule = /** @class */ (function () {
+    function DesignModule() {
+    }
+    DesignModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [_shared_shared_module__WEBPACK_IMPORTED_MODULE_2__["SharedModule"], _design_routing_module__WEBPACK_IMPORTED_MODULE_3__["DesignRoutingModule"]],
+            declarations: tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"](COMPONENTS, COMPONENTS_DYNAMIC),
+            entryComponents: COMPONENTS_DYNAMIC,
+        })
+    ], DesignModule);
+    return DesignModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/routes/design/icons/icons.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/routes/design/icons/icons.component.ts ***!
+  \********************************************************/
+/*! exports provided: DesignIconsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DesignIconsComponent", function() { return DesignIconsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _icons_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./icons.service */ "./src/app/routes/design/icons/icons.service.ts");
+/* harmony import */ var _shared__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @shared */ "./src/app/shared/index.ts");
+
+
+
+
+var DesignIconsComponent = /** @class */ (function () {
+    function DesignIconsComponent(iconsSrv) {
+        this.iconsSrv = iconsSrv;
+    }
+    DesignIconsComponent.prototype.ngOnInit = function () {
+        this.icons = _shared__WEBPACK_IMPORTED_MODULE_3__["MAT_ICONS"];
+    };
+    DesignIconsComponent.prototype.trackByIcon = function (index, icon) {
+        return icon.key;
+    };
+    DesignIconsComponent.ctorParameters = function () { return [
+        { type: _icons_service__WEBPACK_IMPORTED_MODULE_2__["DesignIconsService"] }
+    ]; };
+    DesignIconsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-design-icons',
+            template: __webpack_require__(/*! raw-loader!./icons.component.html */ "./node_modules/raw-loader/index.js!./src/app/routes/design/icons/icons.component.html"),
+            providers: [_icons_service__WEBPACK_IMPORTED_MODULE_2__["DesignIconsService"]],
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_icons_service__WEBPACK_IMPORTED_MODULE_2__["DesignIconsService"]])
+    ], DesignIconsComponent);
+    return DesignIconsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/routes/design/icons/icons.service.ts":
+/*!******************************************************!*\
+  !*** ./src/app/routes/design/icons/icons.service.ts ***!
+  \******************************************************/
+/*! exports provided: DesignIconsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DesignIconsService", function() { return DesignIconsService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var DesignIconsService = /** @class */ (function () {
+    function DesignIconsService() {
+    }
+    DesignIconsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+    ], DesignIconsService);
+    return DesignIconsService;
+}());
+
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=design-design-module-es5.js.map
