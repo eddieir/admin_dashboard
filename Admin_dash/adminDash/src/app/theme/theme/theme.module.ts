@@ -35,7 +35,7 @@ import { GithubButtonComponent } from './admin-layout/header/github.component';
     TopmenuComponent,
     AuthLayoutComponent,
     CustomizerComponent,
-    GithubButtonComponent
+    GithubButtonComponent,
   ],
   imports: [SharedModule],
 })
